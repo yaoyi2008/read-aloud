@@ -1,0 +1,42 @@
+{
+  "name": "read-aloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "prebuild:worker": "node build.js --target=workerd --debug",
+    "dev:worker": "wrangler dev",
+    "deploy": "wrangler deploy --minify --outdir=dist-worker",
+    "dev:node": "tsx watch entries/node.ts",
+    "build:node": "node build.js --target=node",
+    "build:vercel": "node build.js --target=vercel",
+    "vercel-build": "pnpm run build:vercel",
+    "generate-types": "wrangler types"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hono/node-server": "^1.19.2",
+    "@hono/swagger-ui": "^0.5.2",
+    "@hono/zod-openapi": "^1.1.0",
+    "hono": "^4.9.7",
+    "pino": "^9.9.5",
+    "pino-pretty": "^13.1.1",
+    "ws": "^8.18.3",
+    "xast-util-to-xml": "^4.0.0",
+    "xastscript": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.8.3",
+    "@types/ws": "^8.18.1",
+    "@types/xast": "^2.0.4",
+    "esbuild": "^0.25.9",
+    "prettier": "^3.7.4",
+    "tsx": "^4.20.5",
+    "typescript": "~5.9.2",
+    "wrangler": "^4.35.0"
+  },
+  "packageManager": "pnpm@9.11.0+sha256.1c0e33f70e5df9eede84a357bdfa0b1f9dba6e58194628d48a1055756f553754"
+}

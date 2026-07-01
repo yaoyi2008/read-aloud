@@ -1,0 +1,10 @@
+name = "read-aloud"
+compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2025-09-01"
+main = "dist-prebuild/index.js"
+
+[build]
+command = "pnpm run prebuild:worker"
+
+[assets]
+directory = "public"

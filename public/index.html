@@ -1,0 +1,151 @@
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>微软“朗读” TTS 转发器</title>
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="canonical" href="https://ra.yfi.moe" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Read Aloud (Edge TTS) 转发器，支持部署在多种平台"
+    />
+    <meta
+      property="og:description"
+      content="微软“大声朗读”转发器，支持部署在多种平台。通过简单的 HTTP GET 请求，将文本转换为语音。"
+    />
+
+    <meta property="og:image" content="https://ra.yfi.moe/og-ra.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Read Aloud (Edge TTS) 转发器，支持部署在多种平台"
+    />
+    <meta
+      name="twitter:description"
+      content="微软“大声朗读”转发器，支持部署在多种平台。通过简单的 HTTP GET 请求，将文本转换为语音。"
+    />
+    <meta name="twitter:image" content="https://ra.yfi.moe/og-ra.png" />
+    <meta name="twitter:image:width" content="1200" />
+    <meta name="twitter:image:height" content="630" />
+
+    <!-- Simple.css -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">首页</a>
+          </li>
+          <li>
+            <a href="/api/ui">API 文档</a>
+          </li>
+          <li>
+            <a href="https://github.com/yy4382/read-aloud">GitHub</a>
+          </li>
+          <li>
+            <a href="https://yfi.moe/book-listening-collection">更多</a>
+          </li>
+        </ul>
+      </nav>
+      <h1>微软“朗读” TTS 转发器</h1>
+      <p>
+        微软“大声朗读”转发器，支持部署在 Cloudflare Workers、Vercel、Node.js
+        (Docker) 等平台。
+      </p>
+      <p
+        style="
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          margin-bottom: 0rem;
+        "
+      >
+        <a class="button" href="https://github.com/yy4382/read-aloud/issues/1"
+          >直接使用</a
+        >
+        <button type="button" class="import-btn">导入</button>
+        <a class="button" href="https://github.com/yy4382/read-aloud">GitHub</a>
+      </p>
+    </header>
+    <main>
+      <h2 id="-">“大声朗读” 是什么？</h2>
+      <p>
+        “大声朗读” (Read aloud)
+        是微软为一系列自家服务提供的文字转语音服务。由于大家基本上都使用的是
+        Edge 浏览器上的接口，所以也被时常称为 &quot;<strong>Edge TTS</strong>
+        &quot;。
+      </p>
+      <h2 id="self-deploy">自行部署</h2>
+      <p style="font-size: 1.2em">
+        请前往
+        <a href="https://github.com/yy4382/read-aloud">GitHub</a> 项目页面查看。
+      </p>
+      <h2 id="import">导入</h2>
+      <p>
+        <button type="button" class="import-btn">导入</button>
+      </p>
+      <p>目前支持阅读、爱阅记、源阅读的导入。</p>
+      <h2 id="api-">API 参考</h2>
+      <p>
+        <a class="button" href="/api/ui">Swagger 文档</a>
+      </p>
+      <h2 id="-">相关项目</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/wxxxcxx/ms-ra-forwarder"
+            >wxxxcxx/ms-ra-forwarder: 免费的在线文本转语音API</a
+          >
+          本项目最初参考的版本，部分代码架构的来源。只支持 Node.js 运行时。
+        </li>
+        <li>
+          <a href="https://github.com/yy4382/ms-ra-forwarder-for-ifreetime"
+            >yy4382/ms-ra-forwarder-for-ifreetime</a
+          >
+          我对 wxxxcxx/ms-ra-forwarder 的 Fork
+          版本，添加了对爱阅书香和爱阅记的支持。不过由于上游的重构，不再被积极维护；本项目是它的继承者，添加了对
+          Cloudflare Workers 的支持。
+        </li>
+        <li>
+          <a href="https://github.com/yy4382/tts-importer"
+            >yy4382/tts-importer</a
+          >
+          本项目的姊妹项目，使用微软 Azure
+          的官方接口，支持更多语音和其他高级配置。
+        </li>
+      </ul>
+      <p>
+        更多有关听书的信息，请访问
+        <a href="https://yfi.moe/book-listening-collection"
+          >我的听书方法汇总 - Yunfi</a
+        >。
+      </p>
+    </main>
+    <footer>
+      <p>
+        Made with ❤️ by <a href="https://yfi.moe">Yunfi</a> .<br />
+        Please consider give a ⭐️ on
+        <a href="https://github.com/yy4382/read-aloud">GitHub</a>
+        .
+      </p>
+    </footer>
+    <script>
+      document.querySelectorAll(".import-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const currentUrl = window.location.href;
+          const url = new URL("https://tts.yfi.moe/ra");
+          url.searchParams.set("api-site", currentUrl);
+          window.open(url.toString(), "_blank", "noopener,noreferrer");
+        });
+      });
+    </script>
+  </body>
+</html>
